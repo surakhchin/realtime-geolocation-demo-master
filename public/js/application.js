@@ -58,10 +58,19 @@ $(function() {
 
 		// load leaflet map
 		map = L.map('map');
-		// map.setView([lat, lng], 0);
 
-		L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 3, detectRetina: true }).addTo(map);
 
+
+
+
+		L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, detectRetina: true }).addTo(map);
+
+
+		// map.panTo(new L.LatLng(lat, lng));
+
+
+
+        // map.setView([lat, lng], 1);
 // 		L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
 //     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
 //     maxZoom: 18,
@@ -69,10 +78,13 @@ $(function() {
 //     accessToken: 'pk.eyJ1Ijoic3VyYWtoY2hpbiIsImEiOiJjajZsaGc0b2IxZTZzMnd0ZTl1a2JrNHZoIn0.W6NiEPgXanwhmUzeatGOvg'
 // }).addTo(map);
 
+
+
 		// set map bounds
 		map.fitWorld();
 		userMarker.addTo(map);
 		userMarker.bindPopup('<p>You are there! Your ID is ' + userId + '</p>').openPopup();
+
 
 		var emit = $.now();
 		// send coords on when user is active
@@ -94,6 +106,7 @@ $(function() {
 				emit = $.now();
 			}
 		});
+        map.setView(new L.LatLng(lat,lng), 18);
 	}
 
 	doc.bind('mouseup mouseleave', function() {

@@ -47,7 +47,8 @@ $(function() {
 		var lat = position.coords.latitude;
 		var lng = position.coords.longitude;
 		var acr = position.coords.accuracy;
-
+        console.log(lat);
+        console.log(lng);
 		// mark user's position
 		var userMarker = L.marker([lat, lng], {
 			icon: redIcon
@@ -57,8 +58,16 @@ $(function() {
 
 		// load leaflet map
 		map = L.map('map');
+		// map.setView([lat, lng], 0);
 
-		L.tileLayer('https://{s}.tiles.mapbox.com/v3/examples.map-i87786ca/{z}/{x}/{y}.png', { maxZoom: 18, detectRetina: true }).addTo(map);
+		L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 3, detectRetina: true }).addTo(map);
+
+// 		L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+//     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+//     maxZoom: 18,
+//     id: 'map',
+//     accessToken: 'pk.eyJ1Ijoic3VyYWtoY2hpbiIsImEiOiJjajZsaGc0b2IxZTZzMnd0ZTl1a2JrNHZoIn0.W6NiEPgXanwhmUzeatGOvg'
+// }).addTo(map);
 
 		// set map bounds
 		map.fitWorld();
